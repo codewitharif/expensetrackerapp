@@ -21,7 +21,7 @@ const ManageExpenseSubCategories = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        "http://localhost:5000/api/expenseCategories"
+        `${import.meta.env.VITE_API_URL}/api/expenseCategories`
       );
       setCategories(response.data);
       setError("");
@@ -41,7 +41,9 @@ const ManageExpenseSubCategories = () => {
     try {
       setLoading(true);
       await axios.put(
-        `http://localhost:5000/api/expenseCategories/${selectedCategory}/subcategories`,
+        `${
+          import.meta.env.VITE_API_URL
+        }/api/expenseCategories/${selectedCategory}/subcategories`,
         { subcategories: [newSubcategory.trim()] }
       );
       setNewSubcategory("");
@@ -68,7 +70,11 @@ const ManageExpenseSubCategories = () => {
     try {
       setLoading(true);
       await axios.patch(
-        `http://localhost:5000/api/expenseCategories/${selectedCategory}/subcategories/${editSubcategory.index}`,
+        `${
+          import.meta.env.VITE_API_URL
+        }/api/expenseCategories/${selectedCategory}/subcategories/${
+          editSubcategory.index
+        }`,
         { newSubcategory: editSubcategory.value.trim() }
       );
       setEditSubcategory({ index: -1, value: "" });
@@ -91,7 +97,9 @@ const ManageExpenseSubCategories = () => {
     try {
       setLoading(true);
       await axios.delete(
-        `http://localhost:5000/api/expenseCategories/${selectedCategory}/subcategories/${encodeURIComponent(
+        `${
+          import.meta.env.VITE_API_URL
+        }/api/expenseCategories/${selectedCategory}/subcategories/${encodeURIComponent(
           subcategory
         )}`
       );

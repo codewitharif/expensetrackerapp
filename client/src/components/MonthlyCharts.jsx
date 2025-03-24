@@ -20,16 +20,16 @@ const MonthlyCharts = () => {
       try {
         const date = new Date().toISOString().split("T")[0]; // Use current date or allow user input
         const incomeResponse = await axios.get(
-          `http://localhost:5000/api/incomes/monthly?date=${date}`
+          `${import.meta.env.VITE_API_URL}/api/incomes/monthly?date=${date}`
         );
         const expenseResponse = await axios.get(
-          `http://localhost:5000/api/expenses/monthly?date=${date}`
+          `${import.meta.env.VITE_API_URL}/api/expenses/monthly?date=${date}`
         );
         const incomeCategoriesResponse = await axios.get(
-          "http://localhost:5000/api/incomeCategories"
+          `${import.meta.env.VITE_API_URL}/api/incomeCategories`
         );
         const expenseCategoriesResponse = await axios.get(
-          "http://localhost:5000/api/expenseCategories"
+          `${import.meta.env.VITE_API_URL}/api/expenseCategories`
         );
 
         console.log("Income Data:", incomeResponse.data);

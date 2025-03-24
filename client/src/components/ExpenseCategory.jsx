@@ -5,7 +5,7 @@ const ExpenseCategory = () => {
   const [editingCategory, setEditingCategory] = useState(null);
   const [newCategory, setNewCategory] = useState("");
 
-  const API_URL = "http://localhost:5000/api/expenseCategories";
+  const API_URL = `${import.meta.env.VITE_API_URL}/api/expenseCategories`;
 
   // Fetch all categories from API
   useEffect(() => {

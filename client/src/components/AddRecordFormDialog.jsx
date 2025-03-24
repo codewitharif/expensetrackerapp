@@ -36,13 +36,16 @@ const AddRecordFormDialog = ({ dialogOpen, onClose }) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/api/incomes", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(incomeformData),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/incomes`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(incomeformData),
+        }
+      );
 
       if (!response.ok) throw new Error("Failed to save income");
 
@@ -57,13 +60,16 @@ const AddRecordFormDialog = ({ dialogOpen, onClose }) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/api/expenses", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(expenseformData),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/expenses`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(expenseformData),
+        }
+      );
 
       console.log("my expense response is ", response);
 
@@ -95,10 +101,10 @@ const AddRecordFormDialog = ({ dialogOpen, onClose }) => {
     const fetchCategories = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/incomeCategories"
+          `${import.meta.env.VITE_API_URL}/api/incomeCategories`
         );
         const expenseCategoryResponse = await fetch(
-          "http://localhost:5000/api/expenseCategories"
+          `${import.meta.env.VITE_API_URL}/api/expenseCategories`
         );
 
         const data = await response.json();

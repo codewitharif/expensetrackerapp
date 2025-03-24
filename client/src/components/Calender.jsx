@@ -16,10 +16,10 @@ const Calender = () => {
   const fetchData = async () => {
     try {
       const incomeResponse = await axios.get(
-        "http://localhost:5000/api/incomes"
+        `${import.meta.env.VITE_API_URL}/api/incomes`
       );
       const expenseResponse = await axios.get(
-        "http://localhost:5000/api/expenses"
+        `${import.meta.env.VITE_API_URL}/api/expenses`
       );
 
       // Map income data to events

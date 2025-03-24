@@ -15,12 +15,16 @@ const Monthly = () => {
   const fetchMonthlyData = async (selectedDate) => {
     try {
       const incomeResponse = await axios.get(
-        `http://localhost:5000/api/incomes/monthly?date=${selectedDate}`
+        `${
+          import.meta.env.VITE_API_URL
+        }/api/incomes/monthly?date=${selectedDate}`
       );
       setIncomes(incomeResponse.data);
 
       const expenseResponse = await axios.get(
-        `http://localhost:5000/api/expenses/monthly?date=${selectedDate}`
+        `${
+          import.meta.env.VITE_API_URL
+        }/api/expenses/monthly?date=${selectedDate}`
       );
       setExpenses(expenseResponse.data);
     } catch (error) {

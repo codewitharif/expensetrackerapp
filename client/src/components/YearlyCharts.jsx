@@ -21,20 +21,26 @@ const YearlyCharts = () => {
     const fetchData = async () => {
       try {
         const incomeResponse = await axios.get(
-          `http://localhost:5000/api/incomes/monthly?date=${year}-${String(
-            month
-          ).padStart(2, "0")}-01`
+          `${
+            import.meta.env.VITE_API_URL
+          }/api/incomes/monthly?date=${year}-${String(month).padStart(
+            2,
+            "0"
+          )}-01`
         );
         const expenseResponse = await axios.get(
-          `http://localhost:5000/api/expenses/monthly?date=${year}-${String(
-            month
-          ).padStart(2, "0")}-01`
+          `${
+            import.meta.env.VITE_API_URL
+          }/api/expenses/monthly?date=${year}-${String(month).padStart(
+            2,
+            "0"
+          )}-01`
         );
         const incomeCategoriesResponse = await axios.get(
-          "http://localhost:5000/api/incomeCategories"
+          `${import.meta.env.VITE_API_URL}/api/incomeCategories`
         );
         const expenseCategoriesResponse = await axios.get(
-          "http://localhost:5000/api/expenseCategories"
+          `${import.meta.env.VITE_API_URL}/api/expenseCategories`
         );
 
         console.log("Income Data:", incomeResponse.data);

@@ -28,7 +28,9 @@ const Daily = () => {
 
       // Fetch monthly income
       const incomeResponse = await axios.get(
-        `http://localhost:5000/api/incomes/monthly?date=${year}-${month}-01`
+        `${
+          import.meta.env.VITE_API_URL
+        }/api/incomes/monthly?date=${year}-${month}-01`
       );
       const totalMonthlyIncome = incomeResponse.data.reduce(
         (sum, income) => sum + income.amount,
@@ -38,7 +40,9 @@ const Daily = () => {
 
       // Fetch monthly expenses
       const expenseResponse = await axios.get(
-        `http://localhost:5000/api/expenses/monthly?date=${year}-${month}-01`
+        `${
+          import.meta.env.VITE_API_URL
+        }/api/expenses/monthly?date=${year}-${month}-01`
       );
       const totalMonthlyExpenses = expenseResponse.data.reduce(
         (sum, expense) => sum + expense.amount,
@@ -54,12 +58,14 @@ const Daily = () => {
   const fetchDailyData = async (selectedDate) => {
     try {
       const incomeResponse = await axios.get(
-        `http://localhost:5000/api/incomes/daily?date=${selectedDate}`
+        `${import.meta.env.VITE_API_URL}/api/incomes/daily?date=${selectedDate}`
       );
       setIncomes(incomeResponse.data);
 
       const expenseResponse = await axios.get(
-        `http://localhost:5000/api/expenses/daily?date=${selectedDate}`
+        `${
+          import.meta.env.VITE_API_URL
+        }/api/expenses/daily?date=${selectedDate}`
       );
       setExpenses(expenseResponse.data);
     } catch (error) {
